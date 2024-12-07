@@ -1,0 +1,76 @@
+﻿<Window x:Class="Squawker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Squawker"
+        mc:Ignorable="d"
+        Icon="Assets\favicon.ico"
+        ResizeMode="NoResize"
+        Title="Squawker" Height="450" Width="800"
+        Topmost="True"
+        Background="#0d0e12">
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="Inter" />
+        </Style>
+    </Window.Style>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Border Background="#111217" Grid.Row="1" Grid.Column="1" CornerRadius="10" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Squawker" Foreground="white" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <TextBlock TextWrapping="Wrap" 
+                       Foreground="#949494" 
+                       Margin="0 5 0 0"
+                       Text="This squawk generator was made to support the work of virtual atc in Ivao when it comes to assigning a squawk code to new traffic. This program will try to give you only unused squawk codes. However there is never a 100% guarantee that the squawk isnt in use at the moment." />
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <TextBlock Text="Last generated Squawk Code" 
+                       Foreground="White" 
+                       HorizontalAlignment="Center" />
+                    <TextBlock Text="{Binding Squawk}"
+                       Foreground="#0085FF" 
+                       HorizontalAlignment="Center" 
+                       FontSize="40" 
+                       Margin="0 10 0 0" 
+                       FontWeight="Bold" /> 
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <Button Command="{Binding GenerateSquawkCommand}" Width="Auto" Padding="10 20" Foreground="White">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Cursor="Hand"
+                                    Background="#0085FF"
+                                    Padding="10 20"
+                                    BorderThickness="1" 
+                                    CornerRadius="5">
+                                    <TextBlock Text="Generate Squawk" HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
